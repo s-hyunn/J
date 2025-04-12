@@ -11625,3 +11625,8 @@ java.nio.file.NoSuchFileException: /Users/chasuhyun/Desktop/work_java/jars/ojdbc
 	at org.eclipse.jface.text.reconciler.MonoReconciler.initialProcess(MonoReconciler.java:100)
 	at org.eclipse.jdt.internal.ui.text.JavaReconciler.initialProcess(JavaReconciler.java:421)
 	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:177)
+
+!ENTRY org.eclipse.core.resources 2 2 2025-04-12 21:37:56.336
+!MESSAGE Save operation warnings.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2025-04-12 21:37:56.336
+!MESSAGE The project description file (.project) for 'test' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
