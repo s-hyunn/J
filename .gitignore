@@ -1,0 +1,21 @@
+# Eclipse
+.classpath
+.project
+.settings/
+
+# macOS
+.DS_Store
+
+# Java
+*.class
+*.jar
+*.war
+*.log
+
+# Build
+bin/
+target/
+
+# IntelliJ
+*.iml
+.idea/
