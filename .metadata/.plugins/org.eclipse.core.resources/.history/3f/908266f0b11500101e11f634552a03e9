@@ -1,0 +1,17 @@
+package Day0409평가;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Dictionary1 {
+	Scanner sc = new Scanner(System.in);
+
+    Map<String, String> map = new HashMap<>();
+    map.put("장미", "rose");
+    map.put("개", "dog");
+    map.put("고양이", "cat");
+    map.put("핸드폰", "phone");
+    map.put("자동차", "car");
+
+}

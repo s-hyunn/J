@@ -1,0 +1,64 @@
+package c01;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+public class JDBCTest_Select {
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		List<Member> list = new ArrayList<>();
+
+		Class.forName("oracle.jdbc.OracleDriver"); // 11버전 코드 없어도되는듯?
+
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String user = "green";
+		String password = "1234";
+		// 접속담당 -connection
+		Connection conn = DriverManager.getConnection(url, user, password);
+		// 쿼리실행- Statement import sql 것 사용 중요!!!
+
+		Statement stmt = conn.createStatement();
+
+		String query = "SELECT * FROM tbl_member";
+
+		ResultSet rs = stmt.executeQuery(query);
+
+		// 반복문을 지워도 rs.next(); 필요 >
+		// 젤 처음에는 rs 가 열을 가리키고 있어서 데이터가 없어서 읽을 next 가 필요함
+		// rs.next();
+		
+		
+		Member member = new Member();       
+		//멤버인스턴스의 주소값 반복문 밖에 나오면 하나라서 덮어씌워지다가 마지막거만 출력
+		
+		while (rs.next()) {
+
+			
+			String id = rs.getString("id");
+			String pw = rs.getString("pw");
+			String name = rs.getString("name");
+			String phone = rs.getString("phone");
+			String grade_temp = rs.getString("grade");
+			char grade = grade_temp.charAt(0);
+
+			member.setId(id);
+			member.setPw(pw);
+			member.setName(name);
+			member.setPhone(phone);
+			member.setGrade(grade_temp);
+
+			list.add(member);
+		}
+
+		for (Member m : list) {
+			System.out.println(m);
+		}
+
+	}
+
+}

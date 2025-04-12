@@ -1,0 +1,44 @@
+package Day0407;
+
+public class Customer {
+	private int no;
+	private String name;
+	private String phone;
+	private int price;
+
+	Customer(int no, String name, String phone, int price) {
+		this.no = no;
+		this.name = name;
+		this.phone = phone;
+		this.price = price;
+	}
+
+	public void buy(int newprice) {
+		System.out.println(newprice + "원 만큼 물품을 구매하셨습니다");
+		this.price +=newprice ;         //price + newprice;
+		if (this.price > 1000000) {
+			System.out.println("구매금액이 1,000,000원을 초과하여 vip고객으로 전환되었습니다.");
+		}
+	}
+	
+	public void point(int newprice) {
+		if (this.price > 1000000) {
+			
+			int point = (int)(newprice * 0.05);
+			
+			System.out.println("적립 포인트: " + point + "점 (5% VIP 적립)");
+		} else {
+			System.out.println("일반 고객은 포인트가 적립되지 않습니다.");
+		}
+	}
+	
+	@Override
+	public String toString() {
+		if (1000000 < price) {
+			return "Customer [고객번호 v" + no + ", 이름=" + name + ", 전화번호=" + phone + ", 구매금액=" + price + "]";
+		} else {
+			return "Customer [고객번호 c" + no + ", 이름=" + name + ", 전화번호=" + phone + ", 구매금액=" + price + "]";
+		}
+	}
+
+}

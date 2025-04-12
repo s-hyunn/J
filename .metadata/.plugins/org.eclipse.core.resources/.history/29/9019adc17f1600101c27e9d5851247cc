@@ -1,0 +1,11 @@
+package DAY0411;
+
+public interface Ical {
+	public int sum();
+	public int sub();
+	public int mul();
+	public double div();
+	
+	
+	public default int square();
+}

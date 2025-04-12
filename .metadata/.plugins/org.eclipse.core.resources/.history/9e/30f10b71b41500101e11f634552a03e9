@@ -1,0 +1,11 @@
+package c01;
+
+public class JDBCTest_Select {
+
+	public static void main(String[] args) throws Expection{
+		
+		Class.forName("oracle.jdbc.dirver.OracleDriver");
+		
+	}
+
+}

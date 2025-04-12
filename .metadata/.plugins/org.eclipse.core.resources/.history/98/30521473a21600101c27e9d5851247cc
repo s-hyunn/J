@@ -1,0 +1,97 @@
+package DAY0411JDBC;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import c01.Board;
+import c01.Member;
+
+public class JDBCService_member implements IJDBCService<Member> {
+	//전역변수 사용으로 이 클래스에서 모든 메서드가 사용할수있게함 
+	Connection conn= DBManager.getConnection();
+	
+	
+	// sql crud 기능
+	// DB에 입력 insert
+	@Override
+	public void insert(Member m) throws ClassNotFoundException, SQLException {
+        String query = "INSERT INTO tbl_board (bno, title, content, writer, regdate) VALUES (?, ?, ?, ?, SYSDATE)";
+        Connection conn = DBManager.getConnection();
+        PreparedStatement pstmt = conn.prepareStatement(query);
+
+        pstmt.setString(1, m.getId());
+        pstmt.setString(2, m.getPw());
+        pstmt.setString(3, m.getName());
+        pstmt.setString(4, m.getPhone());
+        pstmt.setString(4, m.getGrade());
+
+        pstmt.executeUpdate();
+
+        pstmt.close();
+        conn.close();
+	}
+	// 데이터 수정 update
+	public void update(Member m) throws ClassNotFoundException, SQLException {
+		String query = "Update tbl_member SET name ='?' WHERE id = '?' ";
+        Connection conn = DBManager.getConnection();
+        
+        PreparedStatement pstmt = conn.prepareStatement(query);
+
+        pstmt.setString(1, m.getName());
+        pstmt.setString(2, m.getId());
+        
+
+        pstmt.executeUpdate();
+
+        pstmt.close();
+        conn.close();
+	}
+
+	// 데이터 삭제 delete
+	@Override
+	public void delete(Member m) throws ClassNotFoundException, SQLException {
+		
+		String query = "DELETE FROM tbl_member WHERE id = '?'";
+        Connection conn = DBManager.getConnection();
+        
+        PreparedStatement pstmt = conn.prepareStatement(query);
+
+        pstmt.setString(1, id.getId());
+        
+        
+
+        pstmt.executeUpdate();
+
+        pstmt.close();
+        conn.close();
+	}
+
+	// 데이터 조회 select
+	@Override
+	public ArrayList<Member> selectAll() {
+		ArrayList<Member> list = new ArrayList<>();
+		//db 접속(Connection)
+		Connection conn = DBManager.getConnection();
+		//쿼리 실행(Statement)
+		String query = "SELECT * FROM tbl_member";
+		PreparedStatement pstmt = conn.prepareStatement(query);
+        ResultSet rs = pstmt.executeQuery();
+
+		
+		// db 로부터 받은 데이터 받기(ResultSet)
+		while (rs.next()) {
+            Member m = new Member();
+            m.setBno(rs.getString("bno"));
+            m.setTitle(rs.getString("title"));
+            m.setContent(rs.getString("content"));
+            m.setWriter(rs.getString("writer"));
+            m.setRegdate(rs.getString("regdate"));
+            list.add(m);
+        }
+		// 결과 반환해주기 return 필요 //배열길이가 정해져(array)있지않고 유동적으로 바뀔때는 list 활용
+		return list; // 어레이리스트 타입반환
+	}
+}

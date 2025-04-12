@@ -1,0 +1,10 @@
+package DAY0408;
+
+public class TypeInt {
+	int n;
+	String s = new TypeString();
+	
+	public TypeInt() {
+		s=  new TypeString();
+	}
+}

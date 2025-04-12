@@ -1,0 +1,61 @@
+package 같이연습;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Logintest {
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		String id = "aaa";
+		String pw = "asdasc22";
+		
+		Class.forName("oracle.jdbc.OracleDriver");
+
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String uid = "green";
+		String upw = "1234";
+
+		// 2.query 준비 및 실행 >> Statement (preparedstatement) 객체 생성및 쿼리 실행
+		Connection conn = DriverManager.getConnection(url, uid, upw);
+		String query = 
+				"SELECT id,name FROM tbl_member WHERE id = '?' AND pw = '?' ";
+		
+		PreparedStatement pstmt = conn.prepareStatement(query);
+		pstmt.setString(1,id);
+		pstmt.setString(2,pw);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		rs.next();
+		int result3= rs.getInt(0);
+		
+		if(result3 ==1 ) {
+			System.out.println("로그인성공");
+			
+			//로그인성공 맵에 저장
+			//<키타입,벨류타입>
+			Map<String,String> map = new HashMap<>();
+			
+			map.put(id,pw);
+			
+			System.out.println(map.get("aaa"));
+			
+		}else {
+			System.out.println("로그인실패");
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}

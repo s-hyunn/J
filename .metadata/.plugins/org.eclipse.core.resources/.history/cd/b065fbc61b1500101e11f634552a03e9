@@ -1,0 +1,19 @@
+package Day0409평가;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class dictionary {
+
+	public static void main(String[] args) {
+		Map<String, String> map = new HashMap<>();
+		// <key : 번호,value: 이름>
+
+		map.put("장미", "rose");
+		map.put("개", "dog");
+		map.put("고양이", "cat");
+
+		String value = map.get(1);
+	}
+
+}

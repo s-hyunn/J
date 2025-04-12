@@ -1,0 +1,24 @@
+package Day0407;
+
+public class Objecttest {
+	public static void main(String[] args) {
+		
+		Object[] ob = new Object[5];
+
+		ob[0] = Integer.valueOf(10);
+		
+		ob[1] = 5;
+		
+		ob[2] = 1.2f;
+		
+		ob[3] = 1.879d;
+		
+		ob[4] = "hello";
+		
+		for(int i=0;i<ob.length;i++) {
+			System.out.println(ob[i]);
+		}
+
+	}
+
+}

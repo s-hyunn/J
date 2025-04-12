@@ -1,0 +1,15 @@
+package Day0407;
+
+public class InfinityObjectArray {
+	private Object[] objs = new Object[3];
+
+	public Object[] getObjs() {
+		return objs;
+	}
+
+	public void setObjs(Object[] objs) {
+		this.objs = objs;
+	}
+	
+	
+}

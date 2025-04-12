@@ -1,0 +1,97 @@
+package Day0402조퇴날;
+
+public class MyIntArr1 {
+	private int[] arr;
+	private int size;
+
+	MyIntArr1() {
+	      arr = new int[5];
+	      size = 0;
+	   }
+
+	public void setArr(int index, int value) {
+		if (index >= 0 && index <= size) {
+			if (size >= arr.length) {
+				increase();
+			}
+
+			for (int i = size - 1; i >= index; i--) {
+				arr[i + 1] = arr[i];
+			}
+
+			arr[index] = value;
+			size++;
+		} else {
+			System.out.println("인덱스의 값이 초과하였습니다.");
+		}
+	}
+
+	public int getArr(int index) {
+		return arr[index];
+
+	}
+
+	public void deleteShift(int index) {
+		if (index >= 0 && index < size) {
+			for (int i = index; i < size - 1; i++) {
+				arr[i] = arr[i + 1];
+			}
+			arr[size - 1] = 0;
+			size--;
+		} else {
+			System.out.println("초과한 인덱스의 값에 요구하였습니다.");
+		}
+	}
+
+	public void add(int value) {
+		if (size >= arr.length) {
+			increase();
+		}
+		arr[size] = value;
+		size++;
+	}
+
+	public void increase() {
+		int addSize = arr.length * 2;
+		int newArr[] = new int[addSize];
+
+		for (int i = 0; i < arr.length; i++) {
+			newArr[i] = arr[i];
+		}
+
+		arr = newArr;
+	}
+
+	public int checkArray() {
+		return size;
+	}
+
+	public void search(int value) {
+		boolean found = false;
+		for (int i = 0; i < size; i++) {
+			if (arr[i] == value) {
+				System.out.println("값 " + value + "는 인덱스 " + i + "에 있습니다.");
+				found = true;
+			}
+		}
+		if (!found) {
+			System.out.println("값 " + value + "를 찾을 수 없습니다.");
+		}
+	}
+
+	public void remover() {
+		for (int i = 0; i < size; i++) {
+			arr[i] = 0;
+		}
+		size = 0;
+		System.out.println("모든 값이 삭제되었습니다.");
+	}
+
+	public void printAll() {
+		for (int i = 0; i < size; i++) {
+			System.out.print(arr[i] + " ");
+		}
+		System.out.println();
+	}
+
+}

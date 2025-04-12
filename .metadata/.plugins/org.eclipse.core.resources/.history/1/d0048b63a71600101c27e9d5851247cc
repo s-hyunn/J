@@ -1,0 +1,35 @@
+package 같이연습;
+
+import java.util.Scanner;
+
+public class Testinsertmember {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("회원정보 입력시작");
+
+		// 0회원정보(나중에 스캐너로 입력받을거임
+		System.out.println("아이디를 입력하세요 >");
+		String id = sc.nextLine();
+		// String id = "aaa";
+		System.out.println("비번을 입력하세요 >");
+		String pw = sc.nextLine();
+		// String pw = "1234";
+		System.out.println("이름을 입력하세요 >");
+		String name = sc.nextLine();
+		// String name = "홍길동";
+		System.out.println("폰번호를 입력하세요 >");
+		String phone = sc.nextLine();
+		// String phone = "010-44";
+		System.out.println("등급을 입력하세요 >");
+		String grade = sc.nextLine();
+		// String grade = "A";
+
+		// 1회원정보 setter로 member인스턴스에 저장하기 //기본생성자, 생성자 만들어놓고 바로 (안에 입력받아서 만들 수도 있음)
+		Member m = new Member();
+		
+		//DB에 회원정보 저장하기
+	}
+
+}

@@ -1,0 +1,58 @@
+package DAY0411JDBC;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import c01.Board;
+
+public class JDBCService_board implements IJDBCService<Board>{
+	Scanner sc=new Scanner(System.in);
+	// sql crud 기능
+	
+	// DB에 입력 insert
+	@Override
+	public void insert(Board b) throws ClassNotFoundException, SQLException {
+        String sql = "INSERT INTO tbl_board (bno, title, content, writer, regdate) VALUES (?, ?, ?, ?, SYSDATE)";
+        Connection conn = DBManager.getConnection();
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+
+        pstmt.setString(1, b.getBno());
+        pstmt.setString(2, b.getTitle());
+        pstmt.setString(3, b.getContent());
+        pstmt.setString(4, b.getWriter());
+
+        pstmt.executeUpdate();
+
+        pstmt.close();
+        conn.close();
+    }
+
+	// 데이터 수정 update
+	@Override
+	public void update() {
+
+	}
+
+	// 데이터 삭제 delete
+	@Override
+	public void delete() {
+
+	}
+
+	// 데이터 조회 select
+	@Override
+	public ArrayList<Board> select() {
+		ArrayList<Board> list = new ArrayList<>();
+		// db 접속(Connection)
+
+		// 쿼리 실행(Statement)
+		String query = "SELECT * FROM tbl_board";
+		// db 로부터 받은 데이터 받기(ResultSet)
+
+		// 결과 반환해주기 return 필요 //배열길이가 정해져(array)있지않고 유동적으로 바뀔때는 list 활용
+		return list; // 어레이리스트 타입반환
+	}
+}

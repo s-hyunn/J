@@ -1,0 +1,7 @@
+package Day0409평가;
+
+public class ZenericRepository {
+	
+	public List<String> list;
+
+}

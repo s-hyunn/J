@@ -1,0 +1,13 @@
+package DAY0408;
+
+public class Studenttest {
+
+	public static void main(String[] args) {
+
+		Student s1 = new Student("james", 93);
+		Student s2 = new Student("ann", 95);
+		Student s3 = new Student("tom", 91);
+		System.out.println(s1);
+	}
+
+}

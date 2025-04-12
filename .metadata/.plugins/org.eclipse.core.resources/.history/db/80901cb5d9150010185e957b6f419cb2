@@ -1,0 +1,10 @@
+package c01;
+
+public class Board {
+	private String bno;
+	private String title;
+	private String content;
+	private String writer;
+	private String regdate;
+
+}

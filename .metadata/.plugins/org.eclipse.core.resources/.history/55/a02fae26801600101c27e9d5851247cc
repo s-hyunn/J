@@ -1,0 +1,15 @@
+package DAY0411;
+
+public interface Ical {
+	public int sum();
+	public int sub();
+	public int mul();
+	public double div();
+	
+	//모든 클래스에 적용하는 거 default
+	
+	public default int square(int num) {
+		square = num * num;
+		return square;
+	}
+}

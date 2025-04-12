@@ -1,0 +1,6 @@
+package DAY0408;
+
+public class Man {
+	char gender;
+	
+}

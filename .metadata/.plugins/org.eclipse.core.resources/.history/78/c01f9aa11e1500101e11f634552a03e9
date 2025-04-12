@@ -1,0 +1,38 @@
+package Day0409평가;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class dictionary {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        Map<String, String> map = new HashMap<>();
+        map.put("장미", "rose");
+        map.put("개", "dog");
+        map.put("고양이", "cat");
+        map.put("핸드폰", "phone");
+        map.put("자동차", "car");
+
+        while (true) {
+            System.out.print("번역할 단어를 입력하세요 (종료하려면 '종료' 입력): ");
+            String input = sc.nextLine();
+
+            if (input.equals("종료")) {
+                System.out.println("프로그램을 종료합니다.");
+                break;
+            }
+
+            String value = map.get(input);
+            if (value != null) {
+                System.out.println(input + "의 영어 번역은: " + value);
+            } else {
+                System.out.println("사전에 없는 단어입니다.");
+            }
+        }
+
+        sc.close();
+    }
+}
+

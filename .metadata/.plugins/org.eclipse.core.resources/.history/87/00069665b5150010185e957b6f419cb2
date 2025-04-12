@@ -1,0 +1,23 @@
+package c01;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class JDBCTest_Select {
+
+	public static void main(String[] args) throws ClassNotFoundExpection ,SQLExpection{
+		
+		Class.forName("oracle.jdbc.dirver.OracleDriver");
+		
+		String url = "jdbc:oracle:thin:@localhost:1521:testdb";
+		String user = "green";
+		String password = "1234";
+		//접속담당 -connection
+		Connection conn = DriverManager.getConnection(url,user,password);
+		//쿼리실행-
+		Statement stmt = conn.createStatement();
+		
+		
+	}
+
+}

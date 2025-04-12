@@ -1,0 +1,49 @@
+package c01;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class JDBCTest_Insert2 {
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+
+		Class.forName("oracle.jdbc.OracleDriver");
+
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String id = "green";
+		String pw = "1234";
+
+		Connection conn = DriverManager.getConnection(url, id, pw);
+
+		
+
+		// 쿼리를 실행한다.
+		
+		String uid = "xxx";
+		String upw = "1234";
+		String name = "x맨";
+		String phone = "010-2324-22";
+		String grade = "A";
+
+		// 쿼리를 실행한다.
+		String query = "INSERT INTO tbl_member VALUES ( ?, ?, ? ,? ,? )";
+		// 쿼리실행 담당 객체
+		// Statement stmt = conn.createStatement();
+		PreparedStatement pstmt = conn.prepareStatement(query); // 미리 가져와야해서 쿼리가위에있어야됨
+		pstmt.setString(1, uid); //1번째 ? 에다가 id를 넣는다
+		pstmt.setString(2, upw);
+		pstmt.setString(3, name);
+		pstmt.setString(4, phone);
+		pstmt.setString(5, grade);
+		
+		//쿼리실행
+		//int result = stmt.executeUpdate(query);
+		int result = pstmt.executeUpdate();
+		
+		System.out.println("result: " + result);
+
+	}
+
+}

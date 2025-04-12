@@ -1,0 +1,17 @@
+package c01;
+
+import java.sql.DriverManager;
+
+public class JDBCTest_Insert {
+
+	public static void main(String[] args) {
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		
+		String url = "jdbc:oracle:thin: @localhost:1521:testdb";
+		String uid = "green";
+		String upw = "1234";
+		
+		Connection conn =DriverManager.getConnection(url,uid,upw);
+	}
+
+}

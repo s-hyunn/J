@@ -1,0 +1,9 @@
+package Day0409평가;
+
+import java.util.List;
+
+public class ZenericRepository {
+	
+	public List<String> list;
+
+}

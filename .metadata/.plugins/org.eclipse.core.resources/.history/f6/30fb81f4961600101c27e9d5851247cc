@@ -1,0 +1,44 @@
+package DAY0411;
+
+import java.sql.Connection;
+import java.util.ArrayList;
+
+import c01.Member;
+
+public class JDBCService_member implements IJDBCService<Member> {
+	//전역변수 사용으로 이 클래스에서 모든 메서드가 사용할수있게함 
+	//Connection conn= DBcon.getConnection();
+	
+	
+	// sql crud 기능
+	// DB에 입력 insert
+	@Override
+	public void insert() {
+
+	}
+
+	// 데이터 수정 update
+	public void update() {
+
+	}
+
+	// 데이터 삭제 delete
+	@Override
+	public void delete() {
+
+	}
+
+	// 데이터 조회 select
+	@Override
+	public ArrayList<Member> select() {
+		ArrayList<Member> list = new ArrayList<>();
+		//db 접속(Connection)
+		
+		//쿼리 실행(Statement)
+		String query = "SELECT * FROM tbl_member";
+		//db 로부터 받은 데이터 받기(ResultSet)
+		
+		//결과 반환해주기 return 필요 //배열길이가 정해져(array)있지않고 유동적으로 바뀔때는 list 활용
+		return list; //어레이리스트 타입반환
+	}
+}

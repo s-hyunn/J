@@ -1,0 +1,13 @@
+package DAY0411CAL;
+
+import DAY0411JDBC.Ical;
+
+public class Calculator2 extends Calculator implements Ical {
+
+	public int absNum(int num) {
+		if (num < 0) {
+			return num * -1;
+		} else
+			return num;
+	}
+}

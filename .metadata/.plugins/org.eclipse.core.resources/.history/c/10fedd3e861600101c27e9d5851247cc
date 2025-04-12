@@ -1,0 +1,11 @@
+package c01;
+
+import java.util.ArrayList;
+
+public interface IJDBCService {
+	
+	void insert();
+	void update();
+	void delete();
+	ArrayList<T> select();
+}

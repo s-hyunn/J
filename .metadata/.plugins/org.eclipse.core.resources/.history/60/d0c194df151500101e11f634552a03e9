@@ -1,0 +1,5 @@
+package Day0409평가;
+
+public interface IMapper_crud {
+	 void create(Member member);
+}

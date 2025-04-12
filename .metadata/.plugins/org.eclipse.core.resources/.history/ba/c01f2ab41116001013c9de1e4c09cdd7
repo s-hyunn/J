@@ -1,0 +1,130 @@
+package c01;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Membertest {
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		List<Member> list = new ArrayList<>();
+		Scanner sc = new Scanner(System.in);
+		Class.forName("oracle.jdbc.OracleDriver");
+
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String id = "green";
+		String pw = "1234";
+
+		// 접속담당 -connection
+		Connection conn = DriverManager.getConnection(url, id, pw);
+
+		// 쿼리실행- Statement import sql 것 사용 중요!!!
+		Statement stmt = conn.createStatement();
+		Member m1 = new Member();
+
+//		System.out.println("회원가입을 진행합니다");
+//
+//		System.out.println("아이디를 입력해주세요");
+//		m1.setId(sc.nextLine());
+//
+//		System.out.println("비밀번호를 입력해주세요");
+//		m1.setPw(sc.nextLine());
+//
+//		System.out.println("이름을 입력해주세요");
+//		m1.setName(sc.nextLine());
+//
+//		System.out.println("전화번호를 입력해주세요");
+//		m1.setPhone(sc.nextLine());
+//
+//		System.out.println("등급을 입력해주세요");
+//		m1.setGrade(sc.nextLine());
+//
+//		String query = "INSERT INTO tbl_member VALUES (" 
+//				+ "'" + m1.getId() + "', " 
+//				+ "'" + m1.getPw() + "', "
+//				+ "'" + m1.getName() + "', " 
+//				+ "'" + m1.getPhone() + "', " 
+//				+ "'" + m1.getGrade() + "') ";
+//		
+//		
+//
+//		int result = stmt.executeUpdate(query);
+//
+//		System.out.println("result: " + result);
+//
+//		System.out.println("회원가입이 완료되었습니다.");
+//		
+//		
+		// 게시글 작성
+
+		// 게시글 작성
+		Board b1 = new Board();
+		Statement stmt1 = conn.createStatement();
+
+		System.out.println("📌 게시글 작성을 진행합니다");
+
+		System.out.print("글 번호를 작성해주세요: ");
+		b1.setBno(sc.nextLine());
+
+		System.out.print("글 제목을 작성해주세요: ");
+		b1.setTitle(sc.nextLine());
+
+		System.out.print("게시글 내용을 입력해주세요: ");
+		b1.setContent(sc.nextLine());
+
+		System.out.print("작성자 아이디를 입력해주세요: ");
+		b1.setWriter(sc.nextLine());
+		sc.nextLine(); // 버퍼 비우기용
+ 
+		String query1 = "INSERT INTO tbl_board VALUES (" + "'" + b1.getBno() + "', " + "'" + b1.getTitle() + "', " + "'"
+				+ b1.getContent() + "', " + "'" + b1.getWriter() + "', SYSDATE)";
+
+		int result1 = stmt1.executeUpdate(query1);
+
+		System.out.println("✅ 게시글 작성 완료!");
+		System.out.println("등록 결과: " + result1 + "건 입력됨");
+		// 자원 정리 (선택)
+       stmt1.close();
+        stmt.close();
+        conn.close();
+
+		// 게시글 조회
+		// 게시글 조회 - List 사용
+		List<Board> boardList = new ArrayList<>();
+		Statement stmt2 = conn.createStatement();
+		String query2 = "SELECT * FROM tbl_board";
+
+		ResultSet rs = stmt2.executeQuery(query2);
+
+		while (rs.next()) {
+			Board b = new Board();
+			b.setBno(rs.getString("bno"));
+			b.setTitle(rs.getString("title"));
+			b.setContent(rs.getString("content"));
+			b.setWriter(rs.getString("writer"));
+			b.setRegdate(rs.getString("date")); 
+
+			boardList.add(b);
+		}
+
+		rs.close();
+		stmt2.close();
+
+		// 출력
+		System.out.println("\n📋 게시글 목록 (List 사용)");
+		
+
+		for (Board b : boardList) {
+			System.out.println(b);
+		}
+
+		// 자원정리 선택
+		rs.close();
+		stmt2.close();
+	}
+}

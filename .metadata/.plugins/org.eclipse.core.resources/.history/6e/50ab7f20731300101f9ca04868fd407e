@@ -1,0 +1,15 @@
+package Day0407;
+
+public class Objecttest {
+	
+	int integer;
+	
+	Objecttest(){
+		Object[] o1= new Object[5];
+	}
+	
+	
+	
+	
+	
+}

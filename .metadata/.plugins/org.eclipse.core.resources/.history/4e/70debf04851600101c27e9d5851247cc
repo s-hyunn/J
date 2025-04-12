@@ -1,0 +1,31 @@
+package c01;
+
+public class JDBCService_member {
+	// sql crud 기능
+	// DB에 입력 insert
+	public void insert() {
+
+	}
+
+	// 데이터 수정 update
+	public void update() {
+
+	}
+
+	// 데이터 삭제 delete
+	public void delete() {
+
+	}
+
+	// 데이터 조회 select
+	public void select() {
+		//db 접속
+		
+		//쿼리 실행
+		
+		//db 로부터 받은 데이터 받기
+		
+		//결과 반환해주기 return 필요 //배열길이가 정해져(array)있지않고 유동적으로 바뀔때는 list 활용
+		return ; //어레이리스트 타입반환
+	}
+}

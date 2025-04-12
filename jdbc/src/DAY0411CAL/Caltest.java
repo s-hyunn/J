@@ -1,0 +1,25 @@
+package DAY0411CAL;
+
+public class Caltest {
+
+	public static void main(String[] args) {
+		Calculator c1= new Calculator();
+		c1.num1= -20;
+		c1.num2=30;
+		
+		Calculator2 abs = new Calculator2();
+		
+		System.out.println(c1.sum());
+		System.out.println(c1.sub());
+		System.out.println(c1.mul());
+		System.out.println(c1.div());
+		
+		
+		System.out.println("------");
+		System.out.println("절대값은" + abs.absNum(c1.mul()));
+		
+		//default 로 모든 클래스에 적용시킨 함수 square 
+		System.out.println(c1.square(22));
+	}
+
+}

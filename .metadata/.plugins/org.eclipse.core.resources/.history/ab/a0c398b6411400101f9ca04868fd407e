@@ -1,0 +1,16 @@
+package DAY0408;
+
+public class Typetest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		TypeInt ti = new TypeInt();
+		TypeFloat tf = new TypeFloat();
+		TypeString ts = new TypeString();
+		
+		ti.n=19;
+		ti.s.s = "hello";
+		
+	}
+
+}

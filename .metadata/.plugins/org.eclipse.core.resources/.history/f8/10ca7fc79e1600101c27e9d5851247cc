@@ -1,0 +1,12 @@
+package DAY0411JDBC;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+public interface IJDBCService <T> {
+	
+	void insert throws ClassNotFoundException, SQLException();
+	void update();
+	void delete();
+	ArrayList<T> select();
+}

@@ -1,0 +1,87 @@
+package DAY0408;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Studenttest {
+
+	public static void main(String[] args) {
+		
+		Scanner sc=  new Scanner(System.in);
+		
+		Student s1 = new Student("james", 93);
+		Student s2 = new Student("ann", 46);
+		Student s3 = new Student("candy", 100);
+		Student s4 = new Student("bruce", 64);
+		Student s5 = new Student("ben", 56);
+
+		ArrayList<Student> sList = new ArrayList<>();
+		sList.add(s1);
+		// System.out.println(tf);
+		sList.add(s2);
+		sList.add(s3);
+		sList.add(s4);
+		sList.add(s5);
+		
+		System.out.println("번호와 이름을 입력하세요");
+		
+		int n=sc.nextInt();
+		sc.nextLine();
+		String s=sc.nextLine();
+		
+		for (int i = 0; i < sList.size(); i++) {
+			if(n ==sList.get(i).getSno() && s==sList.get(i).getSname()){
+				System.out.println(sList.get(i).getSname()+"의 점수는 "+sList.get(i).getScore() +"점 입니다.");
+			}
+		}
+		
+		
+		
+		
+		
+		int count=0;
+		
+		for (int i = 0; i < sList.size(); i++) {
+			if(sList.get(i).getScore() < 60) {
+				count++;
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//향상된 for 문
+//		for(Student stu : sList) {
+//			System.out.println(stu);
+//		}
+//		
+//		System.out.println("낙제학생수는 " + count + "명입니다.");
+//		
+//		
+//		Student[] students = new Student[5];
+//		students[0] = s1;
+//		students[1] = s2;
+//		students[2] = s3;
+//		students[3] = s4;
+//		students[4] = s5;
+//
+//		int count = 0;
+//
+//		for (int i = 0; i < students.length; i++) {
+//			if (students[i].getScore() < 60) {
+//				count++;
+//			}
+//		}
+//
+//		System.out.println("낙제학생수는 " + count + "명입니다.");
+
+	}
+
+}

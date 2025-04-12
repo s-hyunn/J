@@ -1,0 +1,11 @@
+package Day0409평가;
+
+import java.util.List;
+
+public interface IMapper_crud {
+	 void create(Member member);
+	 
+	 List<Member> readAll();
+	 
+	 read(int n);
+}

@@ -1,0 +1,13 @@
+package Day0409평가;
+
+public class Member {
+	
+	
+	public void read() {
+		
+	}
+	
+	public void readAll() {
+		
+	}
+}

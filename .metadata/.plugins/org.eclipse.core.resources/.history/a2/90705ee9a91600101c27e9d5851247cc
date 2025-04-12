@@ -1,0 +1,65 @@
+package 같이연습;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class Testinsertmember {
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("회원정보 입력시작");
+
+		// 0회원정보(나중에 스캐너로 입력받을거임
+		System.out.println("아이디를 입력하세요 >");
+		String id = sc.nextLine();
+		// String id = "aaa";
+		System.out.println("비번을 입력하세요 >");
+		String pw = sc.nextLine();
+		// String pw = "1234";
+		System.out.println("이름을 입력하세요 >");
+		String name = sc.nextLine();
+		// String name = "홍길동";
+		System.out.println("폰번호를 입력하세요 >");
+		String phone = sc.nextLine();
+		// String phone = "010-44";
+		System.out.println("등급을 입력하세요 >");
+		String grade = sc.nextLine();
+		// String grade = "A";
+
+		// 1회원정보 setter로 member인스턴스에 저장하기 //기본생성자, 생성자 만들어놓고 바로 (안에 입력받아서 만들 수도 있음)
+		Member m = new Member();
+
+		// DB에 회원정보 저장하기
+		// 1.데이터베이스 접속하기 (주소,아이디,패스워드)필요 > connection 객체 획득
+		Class.forName("oracle.jdbc.OracleDriver");
+
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String uid = "green";
+		String upw = "1234";
+
+		// 2.query 준비 및 실행 >> Statement (preparedstatement) 객체 생성및 쿼리 실행
+		Connection conn = DriverManager.getConnection(url, uid, upw);
+		String query = "INSERT INTO tbl_member VALUES (?,?,?,?,?)";
+
+		PreparedStatement pstmt = conn.prepareStatement(query);
+		pstmt.setString(1, m.getId());
+		pstmt.setString(2, m.getPw());
+		pstmt.setString(3, m.getName());
+		pstmt.setString(4, m.getPhone());
+		pstmt.setString(5, m.getGrade());
+
+		int result = pstmt.executeUpdate();
+
+		if (result == 1) {
+			System.out.println("회원정보저장완료");
+		} else {
+			System.out.println("회원정보가저장안됨");
+		}
+
+	}
+
+}

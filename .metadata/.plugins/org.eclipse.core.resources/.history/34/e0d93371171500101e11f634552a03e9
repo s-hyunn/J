@@ -1,0 +1,9 @@
+package Day0409평가;
+
+public class Zenerictest {
+
+	public static void main(String[] args) {
+		ZenericRepository<T> zr= new ZenericRepository<T>();
+	}
+
+}

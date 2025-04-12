@@ -1,0 +1,43 @@
+package Day0402조퇴날;
+
+public class MyIntArr1test {
+
+	public static void main(String[] args) {
+
+		MyIntArr1 arr = new MyIntArr1();
+
+		arr.setArr(0, 10);
+		arr.setArr(1, 20);
+		arr.setArr(2, 30);
+		arr.setArr(3, 40);
+		arr.setArr(4, 50);
+
+		arr.setArr(3, 11);
+
+		System.out.print("넣은 후 배열의 값: ");
+		arr.printAll();
+
+		/*
+		 * System.out.println(); System.out.print("삭제 후 배열의 값: "); arr.deleteShift(2);
+		 * arr.printAll();
+		 */
+
+		System.out.println();
+		System.out.print("메소드 실행 후 배열의 값: ");
+		arr.add(10);
+		arr.printAll();
+
+		arr.add(80);
+		arr.add(90);
+		System.out.println();
+		System.out.print("메소드 실행 후 배열의 값: ");
+		arr.printAll();
+
+		System.out.println();
+		System.out.print("현재 배열의 길이: ");
+		System.out.println(arr.checkArray());
+
+		arr.content(10);
+	}
+
+}

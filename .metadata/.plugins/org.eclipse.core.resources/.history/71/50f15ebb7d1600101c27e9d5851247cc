@@ -1,0 +1,11 @@
+package DAY0411;
+
+public class Calculator2 extends Calculator implements Cal {
+
+	public int absNum(int num) {
+		if (num < 0) {
+			return num * -1;
+		} else
+			return num;
+	}
+}

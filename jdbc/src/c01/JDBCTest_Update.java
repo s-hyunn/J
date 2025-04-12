@@ -1,0 +1,41 @@
+package c01;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class JDBCTest_Update {
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException{
+		
+		Class.forName("oracle.jdbc.OracleDriver");
+		
+		String url ="jdbc:oracle:thin:@localhost:1521:xe";
+		String id ="green";  
+		String pw = "1234";
+		
+		Connection conn = DriverManager.getConnection(url,id,pw);
+		
+		Statement stmt = conn.createStatement();
+		
+		
+		String query = "Update tbl_member SET name ='bbb' WHERE id = 'bbb' ";
+		
+		int result = stmt.executeUpdate(query);
+		
+		
+		System.out.println(result); //저장했다면 1을 내보내줌
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}

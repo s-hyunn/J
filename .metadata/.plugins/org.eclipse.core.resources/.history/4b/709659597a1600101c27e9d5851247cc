@@ -1,0 +1,23 @@
+package DAY0411;
+
+public class Calculator {
+	 int num1;
+	 int num2;
+
+	public int sum() {
+		int sum=num1+num2;
+				return sum;
+	}
+
+	public int min() {
+
+	}
+
+	public int mul() {
+
+	}
+
+	public double div() {
+
+	}
+}

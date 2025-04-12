@@ -1,0 +1,11 @@
+package DAY0411CAL;
+
+import java.util.ArrayList;
+
+public interface IJDBCService <T> {
+	
+	void insert();
+	void update();
+	void delete();
+	ArrayList<T> select();
+}

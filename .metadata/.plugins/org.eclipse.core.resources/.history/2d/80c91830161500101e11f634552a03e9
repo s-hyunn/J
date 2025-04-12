@@ -1,0 +1,11 @@
+package Day0409평가;
+
+public class Mapper_Maria implements IMapper_crud {
+
+	@Override
+	public void create(Member member) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

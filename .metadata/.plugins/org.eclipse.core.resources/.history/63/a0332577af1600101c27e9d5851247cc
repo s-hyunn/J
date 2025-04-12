@@ -1,0 +1,103 @@
+package 같이연습;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class IDchecktest {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		
+		Member m1= new Member();
+		Member m2= new Member();
+		Member m3= new Member();
+		
+		m1.setId("aaa");
+		
+		Member[] members = new Member[3];
+		members[0]=m1;
+		members[1]=m2;
+		members[2]=m3;
+		
+		String newId = "aaa";
+		
+		//아이디 중복여부확인
+		System.out.println(newId.equals(members[0].getId()));
+		System.out.println(newId.equals(members[1].getId()));
+		System.out.println(newId.equals(members[2].getId()));
+		
+		
+		boolean result = false;
+		
+		for(int i = 0; i < members.length;i++) {
+			if(newId.equals(members[0].getId())){
+				result =true;
+				break;
+			}
+		}
+		
+		if(result) {
+			System.out.println("이미 사용중인 아이디입니다");
+		}else {
+			System.out.println("사용가능한 아이디입니다");
+		}
+		
+		ArrayList<Member> list = new ArrayList<Member>();
+		list.add(m1);
+		list.add(m2);
+		list.add(m3);
+		
+		
+		boolean result1=false;
+		for(int i =0; i< list.size();i++) {
+			if(list.get(i).getId().equals(newId)) {
+				result1=true;
+				break;
+			}else {
+				
+			}
+		}
+		
+		if(result1) {
+			System.out.println("이미사용중아이디");
+		}else {
+			System.out.println("사용가능아이디");
+		}
+		
+		Class.forName("oracle.jdbc.OracleDriver");
+
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String uid = "green";
+		String upw = "1234";
+
+		// 2.query 준비 및 실행 >> Statement (preparedstatement) 객체 생성및 쿼리 실행
+		Connection conn = DriverManager.getConnection(url, uid, upw);
+		String inputId = sc.nextLine();
+		
+		String query = "SELECT COUNT(*) AS cnt FROM tbl_member WHERE id = ' " + inputId + "'" ;
+		Statement stmt = conn.createStatement();
+		
+		ResultSet rs = stmt.executeQuery(query);
+		
+		rs.next();
+		int result2 = rs.getInt("cnt");
+		
+		if(result2 ==1 ) {
+			System.out.println("이미사용중아이디");
+		}else {
+			System.out.println("사용가능아이디");
+		}
+		
+		
+		
+		
+		
+		
+	}
+
+}
